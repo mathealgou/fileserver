@@ -36,7 +36,7 @@ CONFIG_FILE=$(cat << EOF
 [/]         # create a volume at "/" (the webroot), which will
   .         # share the contents of "." (the current directory)
   accs:
-    rw: ed  # the user "ed" gets read-write
+    rw: $USERNAME  # the user gets read-write access
 EOF
 )
 
@@ -71,9 +71,10 @@ Restart=on-failure
 WantedBy=default.target
 SYSTEMD
 
-# Enable and start the service
+# Reload systemd daemon, enable and start the service
+systemctl --user daemon-reload
 systemctl --user enable fileserver.service
-systemctl --user start fileserver.service
+systemctl --user restart fileserver.service
 
 echo "Systemd service 'fileserver.service' created and started."
 echo "The file server will now start automatically on system boot."
