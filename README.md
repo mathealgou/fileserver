@@ -17,7 +17,7 @@ Only supported on Debian-based Linux distributions (e.g., Debian, Ubuntu, Pop!\_
 1. Download and run the installation script:
 
    ```bash
-   curl -L -0 https://github.com/mathealgou/fileserver/releases/latest/download/install.sh | bash
+   sudo curl -L -0 https://github.com/mathealgou/fileserver/releases/latest/download/install.sh | bash
    ```
 
 1. Follow the on-screen instructions to complete the setup.
