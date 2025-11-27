@@ -2,6 +2,7 @@
 
 USERNAME=""
 PASSWORD=""
+PORT="3923"
 
 # Verify if python3 is installed
 if ! command -v python3 &> /dev/null
@@ -26,9 +27,12 @@ curl -L -o copyparty-sfx.py https://github.com/9001/copyparty/releases/latest/do
 # and sabe them in variables
 read -p "Enter the username for the file server: " USERNAME
 read -p "Enter the password for the file server: " PASSWORD
+read -p "Enter the port for the file server [default: 3923]: " PORT
 echo
 
 CONFIG_FILE=$(cat << EOF
+[global]
+  p: $PORT        # port to listen on
 # create users:
 [accounts]
   $USERNAME: $PASSWORD   # username: password
